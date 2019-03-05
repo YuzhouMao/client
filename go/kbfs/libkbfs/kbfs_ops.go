@@ -523,7 +523,7 @@ func (fs *KBFSOpsStandard) getOrInitializeNewMDMaster(ctx context.Context,
 			// We are not running identify for existing TLFs in
 			// KBFS. This makes sure if requested, identify runs even
 			// for existing TLFs.
-			err = identifyHandle(ctx, kbpki, kbpki, h)
+			err = identifyHandle(ctx, kbpki, kbpki, fs.config, h)
 		}
 	}()
 
@@ -777,7 +777,7 @@ func (fs *KBFSOpsStandard) getMaybeCreateRootNode(
 		}
 		if !create && md == (ImmutableRootMetadata{}) {
 			kbpki := fs.config.KBPKI()
-			err := identifyHandle(ctx, kbpki, kbpki, h)
+			err := identifyHandle(ctx, kbpki, kbpki, fs.config, h)
 			if err != nil {
 				return nil, EntryInfo{}, err
 			}

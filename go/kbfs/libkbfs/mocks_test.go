@@ -2742,9 +2742,9 @@ func (mr *MockKeybaseServiceMockRecorder) Resolve(ctx, assertion, offline interf
 }
 
 // Identify mocks base method
-func (m *MockKeybaseService) Identify(ctx context.Context, assertion, reason string) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
+func (m *MockKeybaseService) Identify(ctx context.Context, assertion, reason string, offline keybase1.OfflineAvailability) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason)
+	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason, offline)
 	ret0, _ := ret[0].(kbun.NormalizedUsername)
 	ret1, _ := ret[1].(keybase1.UserOrTeamID)
 	ret2, _ := ret[2].(error)
@@ -2752,9 +2752,9 @@ func (m *MockKeybaseService) Identify(ctx context.Context, assertion, reason str
 }
 
 // Identify indicates an expected call of Identify
-func (mr *MockKeybaseServiceMockRecorder) Identify(ctx, assertion, reason interface{}) *gomock.Call {
+func (mr *MockKeybaseServiceMockRecorder) Identify(ctx, assertion, reason, offline interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*MockKeybaseService)(nil).Identify), ctx, assertion, reason)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*MockKeybaseService)(nil).Identify), ctx, assertion, reason, offline)
 }
 
 // NormalizeSocialAssertion mocks base method
@@ -3221,9 +3221,9 @@ func (m *Mockidentifier) EXPECT() *MockidentifierMockRecorder {
 }
 
 // Identify mocks base method
-func (m *Mockidentifier) Identify(ctx context.Context, assertion, reason string) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
+func (m *Mockidentifier) Identify(ctx context.Context, assertion, reason string, offline keybase1.OfflineAvailability) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason)
+	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason, offline)
 	ret0, _ := ret[0].(kbun.NormalizedUsername)
 	ret1, _ := ret[1].(keybase1.UserOrTeamID)
 	ret2, _ := ret[2].(error)
@@ -3231,9 +3231,9 @@ func (m *Mockidentifier) Identify(ctx context.Context, assertion, reason string)
 }
 
 // Identify indicates an expected call of Identify
-func (mr *MockidentifierMockRecorder) Identify(ctx, assertion, reason interface{}) *gomock.Call {
+func (mr *MockidentifierMockRecorder) Identify(ctx, assertion, reason, offline interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*Mockidentifier)(nil).Identify), ctx, assertion, reason)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*Mockidentifier)(nil).Identify), ctx, assertion, reason, offline)
 }
 
 // IdentifyImplicitTeam mocks base method
@@ -3587,9 +3587,9 @@ func (mr *MockKBPKIMockRecorder) NormalizeSocialAssertion(ctx, assertion interfa
 }
 
 // Identify mocks base method
-func (m *MockKBPKI) Identify(ctx context.Context, assertion, reason string) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
+func (m *MockKBPKI) Identify(ctx context.Context, assertion, reason string, offline keybase1.OfflineAvailability) (kbun.NormalizedUsername, keybase1.UserOrTeamID, error) {
 	m.ctrl.T.Helper()
-	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason)
+	ret := m.ctrl.Call(m, "Identify", ctx, assertion, reason, offline)
 	ret0, _ := ret[0].(kbun.NormalizedUsername)
 	ret1, _ := ret[1].(keybase1.UserOrTeamID)
 	ret2, _ := ret[2].(error)
@@ -3597,9 +3597,9 @@ func (m *MockKBPKI) Identify(ctx context.Context, assertion, reason string) (kbu
 }
 
 // Identify indicates an expected call of Identify
-func (mr *MockKBPKIMockRecorder) Identify(ctx, assertion, reason interface{}) *gomock.Call {
+func (mr *MockKBPKIMockRecorder) Identify(ctx, assertion, reason, offline interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
-	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*MockKBPKI)(nil).Identify), ctx, assertion, reason)
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "Identify", reflect.TypeOf((*MockKBPKI)(nil).Identify), ctx, assertion, reason, offline)
 }
 
 // IdentifyImplicitTeam mocks base method
