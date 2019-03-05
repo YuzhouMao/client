@@ -660,9 +660,16 @@ type KeybaseService interface {
 	// ResolveIdentifyImplicitTeam resolves, and optionally
 	// identifies, an implicit team.  If the implicit team doesn't yet
 	// exist, and doIdentifies is true, one is created.
+	//
+	// If the caller knows that the team needs to be resolvable while
+	// offline, they should pass in
+	// `keybase1.OfflineAvailability_BEST_EFFORT` as the `offline`
+	// parameter.  Otherwise `ResolveIdentifyImplicitTeam` might block
+	// on a network call.
 	ResolveIdentifyImplicitTeam(
 		ctx context.Context, assertions, suffix string, tlfType tlf.Type,
-		doIdentifies bool, reason string) (ImplicitTeamInfo, error)
+		doIdentifies bool, reason string,
+		offline keybase1.OfflineAvailability) (ImplicitTeamInfo, error)
 
 	// ResolveImplicitTeamByID resolves an implicit team to a team
 	// name, given a team ID.
@@ -806,14 +813,26 @@ type resolver interface {
 		offline keybase1.OfflineAvailability) (
 		kbname.NormalizedUsername, keybase1.UserOrTeamID, error)
 	// ResolveImplicitTeam resolves the given implicit team.
+	//
+	// If the caller knows that the team needs to be resolvable while
+	// offline, they should pass in
+	// `keybase1.OfflineAvailability_BEST_EFFORT` as the `offline`
+	// parameter.  Otherwise `ResolveImplicitTeam` might block on a
+	// network call.
 	ResolveImplicitTeam(
-		ctx context.Context, assertions, suffix string, tlfType tlf.Type) (
-		ImplicitTeamInfo, error)
+		ctx context.Context, assertions, suffix string, tlfType tlf.Type,
+		offline keybase1.OfflineAvailability) (ImplicitTeamInfo, error)
 	// ResolveImplicitTeamByID resolves the given implicit team, given
 	// a team ID.
+	//
+	// If the caller knows that the team needs to be resolvable while
+	// offline, they should pass in
+	// `keybase1.OfflineAvailability_BEST_EFFORT` as the `offline`
+	// parameter.  Otherwise `ResolveImplicitTeamByID` might block on
+	// a network call.
 	ResolveImplicitTeamByID(
-		ctx context.Context, teamID keybase1.TeamID, tlfType tlf.Type) (
-		ImplicitTeamInfo, error)
+		ctx context.Context, teamID keybase1.TeamID, tlfType tlf.Type,
+		offline keybase1.OfflineAvailability) (ImplicitTeamInfo, error)
 	// ResolveTeamTLFID returns the TLF ID associated with a given
 	// team ID, or tlf.NullID if no ID is yet associated with that
 	// team.
@@ -850,9 +869,16 @@ type identifier interface {
 		kbname.NormalizedUsername, keybase1.UserOrTeamID, error)
 	// IdentifyImplicitTeam identifies (and creates if necessary) the
 	// given implicit team.
+	//
+	// If the caller knows that the team needs to be identifiable
+	// while offline, they should pass in
+	// `keybase1.OfflineAvailability_BEST_EFFORT` as the `offline`
+	// parameter.  Otherwise `IdentifyImplicitTeam` might block on a
+	// network call.
 	IdentifyImplicitTeam(
 		ctx context.Context, assertions, suffix string, tlfType tlf.Type,
-		reason string) (ImplicitTeamInfo, error)
+		reason string, offline keybase1.OfflineAvailability) (
+		ImplicitTeamInfo, error)
 }
 
 type normalizedUsernameGetter interface {
